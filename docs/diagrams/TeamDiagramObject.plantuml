@@ -23,29 +23,29 @@ object "Martín:Jugador" as o4{
    posicion = Central
 }
 object "Jorge:Jugador" as o5{
-   nombre = Martín
+   nombre = Jorge
    telefono = 0434567928
    direccion = Bolívar
    numero =  4
    posicion = Rematador Externo
 }
 object "Alejandro:Jugador" as o6{
-   nombre = Martín
+   nombre = Alejandro
    telefono = 0493451000
    direccion = Delta Amacuro
    numero =  3
    posicion = Rematador Punta
 }
 object "Armando:Jugador" as o7{
-   nombre = Martín
-   telefono = 04156899923
+   nombre = Armando
+   telefono = 04736002923
    direccion = Caracas
    numero =  12
    posicion = Colocador
 }
 object "Eduardo:Capitan" as o8{
    nombre = Eduardo
-   telefono = 04156899923
+   telefono = 04905392267
    direccion = Maturín
    numero =  1
    posicion = Opuesto
@@ -59,14 +59,14 @@ object "Manuel:Jugador" as o9{
    posicion = Libero
 }
 object "Luis:Jugador" as o10{
-   nombre = Martín
-   telefono = 04156899923
+   nombre = Luis
+   telefono = 048378995530
    direccion = Santa Marta
    numero =  3
    posicion = Central
 }
 object "Samuel:Jugador" as o11{
-   nombre = Martín
+   nombre = Samuel
    telefono = 04256567890
    direccion = Cali
    numero =  5
