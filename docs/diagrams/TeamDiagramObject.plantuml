@@ -1,0 +1,136 @@
+@startuml actorsUseCaseDiagram
+object "Venezuela:Equipo" as o1{
+   nombre = Equipo venezolano
+   registro = VnZl4
+}
+object "Colombia:Equipo" as o2{
+   nombre = Equipo colombiano
+   registro = C0lmb14
+}
+
+object "Ángel:Jugador" as o3{
+    nombre = Ángel
+    telefono = 04175897023
+    direccion = Táchira
+   numero =  9
+   posicion = Libero
+}
+object "Martín:Jugador" as o4{
+   nombre = Martín
+    telefono = 04156899923
+    direccion = Anzoátegui
+   numero =  15
+   posicion = Central
+}
+object "Jorge:Jugador" as o5{
+   nombre = Martín
+   telefono = 0434567928
+   direccion = Bolívar
+   numero =  4
+   posicion = Rematador Externo
+}
+object "Alejandro:Jugador" as o6{
+   nombre = Martín
+   telefono = 0493451000
+   direccion = Delta Amacuro
+   numero =  3
+   posicion = Rematador Punta
+}
+object "Armando:Jugador" as o7{
+   nombre = Martín
+   telefono = 04156899923
+   direccion = Caracas
+   numero =  12
+   posicion = Colocador
+}
+object "Eduardo:Capitan" as o8{
+   nombre = Eduardo
+   telefono = 04156899923
+   direccion = Maturín
+   numero =  1
+   posicion = Opuesto
+}
+
+object "Manuel:Jugador" as o9{
+   nombre = Manuel
+   telefono = 04561821532
+   direccion = Barranquilla
+   numero =  7
+   posicion = Libero
+}
+object "Luis:Jugador" as o10{
+   nombre = Martín
+   telefono = 04156899923
+   direccion = Santa Marta
+   numero =  3
+   posicion = Central
+}
+object "Samuel:Jugador" as o11{
+   nombre = Martín
+   telefono = 04256567890
+   direccion = Cali
+   numero =  5
+   posicion = Rematador Externo
+}
+object "Felix:Jugador" as o12{
+   nombre = Félix
+    telefono = 04829030012
+    direccion = Cartagena
+   numero =  8
+   posicion = Rematador Punta
+}
+object "Sebastian:Jugador" as o13{
+  nombre = Sebastián
+    telefono = 045423567890
+    direccion = Bogotá
+   numero =  10
+   posicion = Colocador
+}
+object "Miguel:Capitan" as o14{
+   nombre = Miguel
+    telefono = 04256873323
+    direccion = Medellín
+   numero =  13
+   posicion = Opuesto
+}
+object "Venezuela-Colombia:Juego" as o15{
+   localidad = Caracas
+   puntuacion = 25-23
+}
+
+object "Yenmy:Entrenador" as o16{
+   nombre = Yenmy
+    telefono = 04256798923
+    direccion = Caracas
+   numeroAcreditacion = 987235
+   aniosdeexperiencia = 8
+}
+object "Joel:Entrenador" as o17{
+   nombre = Joel
+    telefono = 04357708223
+    direccion = Miranda
+   numeroAcreditacion = 827365
+   aniosdeexperiencia = 10
+}
+
+
+o1 o-- o3
+o1 o-- o4
+o1 o-- o5
+o1 o-- o6
+o1 o-- o7
+o1 o-- o8
+o2 o-- o9
+o2 o-- o10
+o2 o-- o11
+o2 o-- o12
+o2 o-- o13
+o2 o-- o14
+o1 <-- o16: entrena a
+o2 <-- o16: entrena a
+o2 <-- o17: entrena a
+o15 <-- o1: compitió en el
+o15 <-- o2: compitió en el
+
+
+@enduml

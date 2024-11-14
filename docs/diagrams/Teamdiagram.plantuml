@@ -1,0 +1,33 @@
+@startuml actorsUseCaseDiagram
+class Equipo{
+    +string:nombre
+    +string:registro
+}
+class Jugador{
+    +string:numero
+    +string:posicion
+}
+class Capitan
+class Juego{
+    +string:localidad
+    +string:puntuacion
+}
+class Persona{
+    +string:nombre
+    +string:telefono
+    +string:direccion
+    
+}
+
+class Entrenador{
+    +interger:numeroAcreditacion
+    +interger:aniosdeExperiencia
+}
+
+Equipo o-- "6..many" Jugador
+Persona <|-- Jugador
+Persona <|-- Entrenador
+Jugador <|-- Capitan
+Juego <-- Equipo: "Compiten en"
+Equipo "many" <-- "1" Entrenador: entrena a
+@enduml
