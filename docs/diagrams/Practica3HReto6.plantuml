@@ -1,0 +1,10 @@
+@startuml
+agent ": Registro" as A
+agent "venta : Venta" as B
+
+
+A - B: "1.crearLineaVenta(espec, cant) \n ->"
+B - B: "2. lineasVenta.añadir(New LineaVenta(espec, cant))" 
+
+
+@enduml

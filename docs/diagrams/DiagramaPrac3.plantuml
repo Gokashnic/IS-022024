@@ -1,0 +1,14 @@
+@startuml
+actor "User: cliente" as User
+participant "Milista: Lista" as A
+participant "item: Item" as B
+User ->A: getItem()
+activate A
+A-->User: item
+deactivate A
+A->B: hacerAlgo()
+activate B
+B-->A: hice algo
+deactivate B
+
+@enduml

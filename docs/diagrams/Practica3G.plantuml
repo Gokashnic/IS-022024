@@ -1,0 +1,13 @@
+@startuml
+agent ": Cliente" as primero
+agent "c: Compra" as segundo
+agent "f:Fecha" as tercero
+agent "l: Lista" as cuarto
+
+
+
+primero -- segundo : "1: crea \n 2: setCosto() \n 3: setFecha() \n | \nv"
+
+segundo -- tercero: " 4: getFecha() \n | \nv"
+cuarto -- primero: " 5: addLista() \n^ \n |  "
+@enduml

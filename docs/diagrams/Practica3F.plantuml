@@ -1,0 +1,12 @@
+@startuml
+agent ": Cliente" as primero
+agent ": Prueba" as segundo
+
+
+
+
+primero - segundo : "1: create \n 2: f() ->"
+
+segundo - segundo: " 2.1: g() \n 2.2:h() \n <-"
+
+@enduml

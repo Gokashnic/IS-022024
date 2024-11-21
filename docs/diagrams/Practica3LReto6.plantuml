@@ -1,0 +1,15 @@
+@startuml
+[*] --> Colocado: encargar el pedido
+Colocado -> Pagado: Realizar el pago
+state Pagado {
+    [*] -> Validado: Validar pedido
+    Validado -> Cobrado: Cobrar pago
+    [*] --> PagoAdelantado
+    PagoAdelantado -> Obtenido: obtener producto
+     
+}
+Pagado -> Realizado
+Realizado -> Enviado
+Enviado -> Entregado
+
+@enduml
