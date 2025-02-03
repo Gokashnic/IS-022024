@@ -1,0 +1,16 @@
+@startuml Registrar Usuario
+
+left to right direction
+
+Actor Usuario
+
+control "Gestor de lista de usuarios" as gestor
+boundary "Formulario de registro de usuario" as reg
+entity "Sesion de usuario" as pa
+
+Usuario -- reg: -->\n//1: IngresarDatosUsuario()//
+reg ---- gestor : -->\n//2: ValidarDatosUsuario()// \n <--\n//5: RegistroExitoso()//
+gestor -- pa : -->\n//3: CrearUsuario()// \n <--\n//4: RegistroExitoso()//
+
+
+@enduml

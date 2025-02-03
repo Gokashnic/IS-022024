@@ -1,0 +1,94 @@
+@startuml Diagrama de Clases de Análisis General
+
+class "FormularioDeInicioDeSesion" as FIS {
++ EnviarDatosUsuario() : Usuario
+}
+class "GestorDeInicioDeSesion" as GIS
+class "Dashboard" as DASH
+class "Usuario" as USU{
+-nombre : string
+-usuario : string
+-correo : string
+-clave : string
+
++ RegistroExitoso() : boolean
+}
+
+class "FormularioDeRegistro" as FDR {
+EnviarDatosUsuario() : Usuario
+}
+class "GestorDeUsuarios" as GDU {
++ ValidarDatos() : void
++ CrearUsuario() : Usuario
++ RegistroExitoso() : boolean
++ MostrarInicioDeSesion() : void
+}
+
+class "VistaCalendario" as VC
+class "GestorDeCalendario" as GDC
+class "GestorDeEventos" as GDE
+class "Calendario" as C {
+-ListaDeEventos : List<Eventos> 
+-ListaDePublicacion : List<Publicacion> 
+-Dia : List<Dia> 
+-Meses : List<Meses> 
+-Anios : List<Anios>
+}
+class "Evento" as E{
+-titulo : string
+-fecha_inicio : DataTime
+-fecha_fin : DataTime
+-categoria : string
+-descripcion : string
+}
+
+class "FormularioDeEventos" as FDE
+class "GestorDeEventos" as GDE
+
+class "FormularioDePublicacion" as FDP {
++ EnviarDatosPublicacion()
+}
+class "GestorDePublicaciones" as GDP {
++ CrearPublicacion()
+}
+class "Publicacion" as P {
+Publicac
+}
+
+class "VistaDeRevision" as VDR
+class "VistaDeEvento" as VDE
+class "VistaDePublicacion" as VDP
+class "GestorDeRevision" as GDR
+
+note right of (VDR)
+    Revisión de Eventos y 
+    Publicaciones
+end note
+
+GDU --> USU
+USU --> GDU
+FDR --> GDU
+GDU --> FIS
+
+FIS --> GIS
+GIS --> USU
+GIS --> DASH
+
+FDE --> GDE
+GDE --> E
+GDE --> C
+
+FDP --> GDP
+GDP --> P
+
+VC --> GDC
+GDC --> C
+C --> GDE
+
+VDR --> GDR
+GDR --> P
+GDR --> E
+GDR --> VDE
+GDR --> VDP
+
+@enduml

@@ -1,0 +1,40 @@
+@startuml Diagrama de Paquetes
+
+left to right direction
+
+package "GestiondePublicaciones" {
+usecase "FormularioDePublicacion" as UC7
+usecase "GestorDePublicaciones" as UC8
+usecase "Publicacion" as UC9
+}
+
+package "GestionBasicaUsuario" {
+usecase "FormularioInicioDeSesion" as UC1
+usecase "GestorInicioDeSesion" as UC2
+usecase "Usuario" as UC13
+usecase "FormularioDeRegistro" as UC15
+usecase "UC16 - Cerrar Sesión" as UC16
+}
+
+package "GestiondeModeracion" {
+usecase "VistaDeEvento" as UC17
+usecase "VistaDePublicacion" as UC18
+usecase "GestorDeRevision" as UC19
+}
+
+
+package "GestionEventos" {
+    usecase "FormularioDeEventos" as UC3
+    usecase "GestorDeEventos" as UC4
+    usecase "Evento" as UC5
+    usecase "UC6 - Eliminar Evento" as UC6
+    usecase "UC14 - Añadir Evento" as UC14
+}
+
+GestionEventos ..> GestionBasicaUsuario
+GestiondePublicaciones ..> GestionBasicaUsuario
+GestiondePublicaciones <.. GestiondeModeracion
+GestionEventos <.. GestiondeModeracion 
+
+
+@enduml

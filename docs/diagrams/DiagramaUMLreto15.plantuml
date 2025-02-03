@@ -1,0 +1,44 @@
+@startuml Reto15
+
+left to right direction
+class TurnOnDevices{
+    +main(String[] args)
+    +turnOnDevice(Connectable device)
+}
+class  Connectable <<interface>>{
+     +boolean estado
+     +turnOn()
+     +turnOff()
+     +isOn()
+
+}
+class CoffeMaker{
+    -boolean estado
+    +on()
+    +off() 
+    +isOff()
+}
+class CMAdapter{
+    +CoffeMaker coffemaker
+    +CMAdapter(CoffeMaker cm)
+    +turnOn()
+    +turnOff()
+    +isOn()
+}
+class Computer{
+    +turnOn()
+    +turnOff()
+    +isOn()
+}
+class Lamp{
+    +turnOn()
+    +turnOff()
+    +isOn()
+}
+TurnOnDevices -> Connectable
+Connectable <|-- CMAdapter
+Connectable <|-- Lamp
+Connectable <|-- Computer
+CMAdapter *-- CoffeMaker
+
+@enduml

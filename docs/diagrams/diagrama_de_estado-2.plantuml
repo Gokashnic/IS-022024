@@ -1,0 +1,80 @@
+@startuml Diagrama_de_subestados
+
+hide empty description
+
+' Estado inicial
+[*] --> Usuario : Proceso del Usuario
+
+' Subestados del Usuario
+state Usuario {
+    state  hola <<choice>>
+    [*] --> hola : Usuario se registra
+    hola --> Registro
+    hola --> IniciandoSesion
+
+    state IniciandoSesion {
+        [*] --> IngresandoDatos: Ingresar Datos
+        IngresandoDatos --> VerificandoDatos: Verificar Datos
+        VerificandoDatos --> ConfirmadoInicio: Confirmar Cuenta
+
+    }
+    state Registro {
+        [*] --> CompletarDatos : Completar datos
+        CompletarDatos --> VerificarCorreo : Verificar correo electrónico
+        VerificarCorreo --> Confirmado : Confirmar cuenta
+    }
+    IniciandoSesion --> UsuarioInactivo
+    Registro --> UsuarioInactivo : Usuario registrado pero no activo
+    UsuarioInactivo --> UsuarioActivo : Activar cuenta
+    UsuarioActivo --> UsuarioSuspendido : Cuenta suspendida por violación de reglas
+    UsuarioSuspendido --> UsuarioActivo : Reactivar cuenta
+    UsuarioActivo --> Usuario_Sesión_Iniciada : Iniciar sesión
+    Usuario_Sesión_Iniciada --> UsuarioActivo : Cerrar Sesión
+}
+
+' Estado inicial del Evento
+[*] --> Evento : Proceso del Evento
+
+' Subestados del Evento
+state Evento {
+    [*] --> CreacionEvento : Crear evento
+    CreacionEvento --> EventoBorrador : Guardar como borrador
+    EventoBorrador --> Publicado : Publicar evento
+    Publicado --> Modificado : Modificar evento
+    Modificado --> Archivado : Archivar evento
+    Publicado --> Archivado : Archivar evento
+    EventoBorrador --> Cancelado : Cancelar evento
+    Cancelado --> [*]
+    Archivado --> [*]
+}
+
+' Estado inicial del Comentario
+[*] --> Comentario : Proceso del Comentario
+
+' Subestados del Comentario
+state Comentario {
+    [*] --> CreacionComentario : Crear comentario
+    CreacionComentario --> ComentarioPublicado : Publicar comentario
+    ComentarioPublicado --> ComentarioEliminado : Eliminar comentario
+    ComentarioPublicado --> [*]
+    ComentarioEliminado --> [*]
+}
+
+' Estado inicial de las Notificaciones
+[*] --> Notificacion : Proceso de las Notificaciones
+
+' Subestados de las Notificaciones
+state Notificacion {
+    [*] --> CreacionNotificacion : Crear notificación
+    CreacionNotificacion --> NotificacionEnviada : Enviar notificación
+    NotificacionEnviada --> EstadoNotificacion : Estado de notificación
+    state EstadoNotificacion <<choice>> {
+        [*] --> Leida : Marcar como leída
+        [*] --> Borrada : Borrar
+        Leida --> Borrada
+        Borrada --> [*]
+    }
+}
+
+@enduml
+

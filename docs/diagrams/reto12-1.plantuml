@@ -1,0 +1,111 @@
+@startuml Diagrama de clases de análisis
+class "SesiónDeUsuario" as SU {
+    +InicioExitoso() : boolean
+}
+class "Usuario" as user {
+    +nombre : string
+    +usuario : string
+    -correo : string
+    -clave : string
+
+    +IngresarDatosUsuario(string nombre, string usuario, string correo, string clave) : void
+    +IngresarDatosUsuario(string usuario, string clave) : void
+    +IngresarDatosEvento(string titulo, DataTime fecha_inicio, DataTime fecha_fin, string categoria, string descripcion) : void
+}
+class "Evento" as event
+class "Calendario" as Cal
+class "Moderador" as mod {
+     +IngresarDatosPublicacion(string titulo, DataTime Fecha_Publicaion, string categoria, string descripcion) : void
+    +Respuesta() : boolean
+}
+class "GestorDeEventos" as GE {
+    +EnviarDatosEvento(string titulo, DataTime fecha_inicio, DataTime fecha_fin, string categoria, string descripcion) : void
+    +AgregarAlCalendario(Evento evento)
+    +PublicarEvento(string titulo, DataTime fecha_inicio, DataTime fecha_fin, string categoria, string descripcion) : Evento  
+}
+class "FormularioDeDatosDelEvento" as FDE {
+    +EnviarDatosEvento(string titulo, DataTime fecha_inicio, DataTime fecha_fin, string categoria, string descripcion) : void
+}
+class "SolicitudDeEvento" as SE {
+     +EnviarSolicitud() : void
+     +Respuesta() : boolean
+
+}
+class "GestorDeAprobaciónDeEvento" as GAE {
+     +EnviarSolicitud() : void
+     +Respuesta(): boolean
+
+}
+class "FormularioDeInicioDeSesión" as FIS {
+    +enviarDatosUsuario(usuario, clave) : void
+}
+class "FormularioDeRegistroDeUsuario" as FRU {
+    +ValidarDatos(): boolean
+
+}
+
+class "GestorDeListaDeUsuarios" as GLU {
+    +CrearUsuario(string nombre, string correo, string clave) : Usuario
+}
+
+class "GestorDePublicación" as GP {
+   +HacerPublicacion(string titulo, DataTime Fecha_Publicaion, string categoria, string descripcion) : Publicacion
+   +AgregarCalendario(Publicacion publicacion) : void
+   +EnviarDatosPublicacion(string titulo, DataTime Fecha_Publicaion, string categoria, string descripcion) : void
+}
+
+class "FormularioDeDatosDeLaPublicación" as FDP {
+    +EnviarDatosPublicacion(string titulo, DataTime Fecha_Publicaion, string categoria, string descripcion) : void
+}
+class "Profesor" as prof {
+     +IngresarDatosPublicacion(string titulo, DataTime Fecha_Publicaion, string categoria, string descripcion) : void
+}
+class "PersonalDeApoyo" as apoyo {
+     +IngresarDatosPublicacion(string titulo, DataTime Fecha_Publicaion, string categoria, string descripcion) : void
+}
+class "SolicitudDePublicación" as SP {
+    EnviarSolicitud() : void
+    Respuesta() : boolean
+}
+class "GestorDeAprobaciónDePublicación" as GAP {
+     EnviarSolicitud() : void
+     Respuesta() : boolean
+}
+class "GestorDeInicioDeSesion" as GIS {
+    +VerificarDatos(usuario, clave) : void
+    +InicioExitoso() : boolean
+}
+class "Publicación" as publi
+'Registro'
+user  --> FRU : Ingresa los datos
+FRU  --> GLU: Envia datos validados
+GLU --> user
+'Inicio de Sesión'
+user --> FIS
+FIS --> GIS
+GIS --> SU
+'Publicar un Evento'
+user -left-> FDE
+FDE --> GE
+GE -down-> event
+GE --> Cal
+GE --> SE
+SE --> GAE
+GAE --> mod
+user <|- mod
+
+prof --> FDP
+mod --> FDP
+apoyo --> FDP
+FDP --> GP
+GP --> SP
+GP --> Cal
+GP --> publi
+SP --> GAP 
+GAP --> mod
+
+
+user <|-- prof
+user <|-- apoyo
+
+@enduml

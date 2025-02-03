@@ -1,0 +1,17 @@
+@startuml despliegue 
+left to right direction 
+
+node Programa{
+    node GestionDeEventos
+    node GestionDeUsuario
+    node GestionDePublicaciones
+    node GestionDeRevision
+    node GestionDeCalendario
+}
+
+node Cliente 
+Cliente --- Programa
+
+
+'ajá qué procede?
+@enduml
